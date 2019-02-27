@@ -594,10 +594,26 @@
             System.out.println("calculate 22  ");
         }
 
+     //   @Test
+      //  public void calculate() {   //test passed as correct input  TODO
+      //      stayTest = new Period(0, 1);
+      //      System.out.println("in calculate test");
+     //   }
         @Test
-        public void calculate() {   //test passed as correct input
-            stayTest = new Period(0, 1);
-            System.out.println("in calculate test");
+        public void calculate24() {
+            stayTest = new Period(9, 17);
+            carParkKind = CarParkKind.STAFF;
+
+            reducedPeriodsTime.add(new Period(17, 18));
+            normalPeriodsTime.add(new Period(9, 17));
+            hourlyNormalRate = BigDecimal.valueOf(5);
+            hourlyReducedRate = BigDecimal.valueOf(0);
+
+            Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
+                    reducedPeriodsTime, normalPeriodsTime);
+            assertThat(rt.calculate(stayTest), is(BigDecimal.valueOf(8.00)));
+            //assertThat(BigDecimal.valueOf(4.0), is(rt.calculate(stayTest)));
+            System.out.println("calculate 14  ");
         }
     }
 
