@@ -65,7 +65,7 @@ public class Rate {
     private Boolean isValidPeriods(ArrayList<Period> list) {
         Boolean isValid = true;
         if (list.size() >= 2) {
-            Period secondPeriod;
+            //Period secondPeriod; TODO remove this
             int i = 0;
             int lastIndex = list.size()-1;
             while (i < lastIndex && isValid) {
@@ -97,17 +97,27 @@ public class Rate {
         BigDecimal amountDue;
         amountDue = ((this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours)))
                 .add(this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)))
-                .subtract(BigDecimal.valueOf(this.kind.getFree())))
-                .multiply(BigDecimal.valueOf(this.kind.getReduction()));
+                .subtract(this.kind.getFree()));
+               // .subtract(BigDecimal.valueOf(this.kind.getFree())));
+                //.multiply(BigDecimal.valueOf(this.kind.getReduction()));
         if (amountDue.doubleValue() < 0){
             return BigDecimal.valueOf(0.00);
+        }else{
+            amountDue = amountDue.multiply(this.kind.getReduction());
+            //amountDue = amountDue.multiply(BigDecimal.valueOf(this.kind.getReduction()));
         }
-
+/*
         if(this.kind.getMinimum() > 0.00 && this.kind.getMinimum() > amountDue.doubleValue()) {
             return BigDecimal.valueOf(this.kind.getMinimum());
         }
         if(this.kind.getMaximum() > 0.00 && this.kind.getMaximum() < amountDue.doubleValue()) {
             return BigDecimal.valueOf(this.kind.getMaximum());
+        }*/
+        if(this.kind.getMinimum().doubleValue() > 0.00 && this.kind.getMinimum().doubleValue() > amountDue.doubleValue()) {
+            return this.kind.getMinimum();
+        }
+        if(this.kind.getMaximum().doubleValue() > 0.00 && this.kind.getMaximum().doubleValue() < amountDue.doubleValue()) {
+            return this.kind.getMaximum();
         }
         return amountDue;
     }

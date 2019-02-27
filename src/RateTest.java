@@ -501,7 +501,7 @@
 
             Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                     reducedPeriodsTime, normalPeriodsTime);
-            assertThat(BigDecimal.valueOf(3), is(rt.calculate(stayTest)));
+            assertThat(rt.calculate(stayTest).doubleValue(), is(3.00));//TODO remember to do something
             System.out.println("calculate 14  ");
         }
 
@@ -686,7 +686,7 @@
 
             Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                     reducedPeriodsTime, normalPeriodsTime);
-            assertThat(rt.calculate(stayTest), is(BigDecimal.valueOf(7.00)));
+            assertThat(rt.calculate(stayTest).doubleValue(), is(7.00));
         }
         @Test
         public void calculate30() {
@@ -700,7 +700,7 @@
 
             Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                     reducedPeriodsTime, normalPeriodsTime);
-            assertThat(rt.calculate(stayTest), is(BigDecimal.valueOf(7.00)));
+            assertThat(rt.calculate(stayTest).doubleValue(), is(7.00));
         }
         @Test
         public void calculate31() {
@@ -714,7 +714,7 @@
 
             Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                     reducedPeriodsTime, normalPeriodsTime);
-            assertThat(rt.calculate(stayTest), is(BigDecimal.valueOf(18.50)));
+            assertThat(rt.calculate(stayTest).doubleValue(), is(18.50));
         }
         @Test
         public void calculate32() {
@@ -728,12 +728,12 @@
 
             Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                     reducedPeriodsTime, normalPeriodsTime);
-            assertThat(rt.calculate(stayTest), is(BigDecimal.valueOf(6.00)));
+            assertThat(rt.calculate(stayTest).doubleValue(), is(6.00));
         }
         @Test
         public void calculate33() {
             stayTest = new Period(9, 10);
-            carParkKind = CarParkKind.MANAGMENT;
+            carParkKind = CarParkKind.MANAGEMENT;
 
             reducedPeriodsTime.add(new Period(17, 24));
             normalPeriodsTime.add(new Period(9, 17));
@@ -747,16 +747,16 @@
         @Test
         public void calculate34() {
             stayTest = new Period(9, 17);
-            carParkKind = CarParkKind.MANAGMENT;
+            carParkKind = CarParkKind.MANAGEMENT;
 
             reducedPeriodsTime.add(new Period(17, 24));
             normalPeriodsTime.add(new Period(9, 17));
-            hourlyNormalRate = BigDecimal.valueOf(1);
-            hourlyReducedRate = BigDecimal.valueOf(0);
+            hourlyNormalRate = BigDecimal.valueOf(1.00);
+            hourlyReducedRate = BigDecimal.valueOf(0.00);
 
             Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                     reducedPeriodsTime, normalPeriodsTime);
-            assertThat(rt.calculate(stayTest), is(BigDecimal.valueOf(8.00)));
+            assertThat(rt.calculate(stayTest).doubleValue(), is(8.00));
         }
         @Test
         public void calculate35() {
