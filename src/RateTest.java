@@ -838,7 +838,7 @@
             hourlyReducedRate = BigDecimal.valueOf(1);
 
             Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
-                    reducedPeriodsTime, normalPeriodsTime);
+                                            reducedPeriodsTime, normalPeriodsTime);
             assertTrue(BigDecimal.valueOf(42.5).compareTo(rt.calculate(stayTest)) == 0);
         }
         @Test
@@ -854,7 +854,7 @@
             hourlyReducedRate = BigDecimal.valueOf(1);
 
             Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
-                    reducedPeriodsTime, normalPeriodsTime);
+                                            reducedPeriodsTime, normalPeriodsTime);
             assertTrue(BigDecimal.valueOf(5.5).compareTo(rt.calculate(stayTest)) == 0);
         }
         @Test
@@ -870,7 +870,7 @@
             hourlyReducedRate = BigDecimal.valueOf(1);
 
             Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
-                    reducedPeriodsTime, normalPeriodsTime);
+                                            reducedPeriodsTime, normalPeriodsTime);
             assertTrue(BigDecimal.valueOf(3.375).compareTo(rt.calculate(stayTest)) == 0);
         }
         @Test
@@ -886,7 +886,7 @@
             hourlyReducedRate = BigDecimal.valueOf(1);
 
             Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
-                    reducedPeriodsTime, normalPeriodsTime);
+                                            reducedPeriodsTime, normalPeriodsTime);
             assertTrue(BigDecimal.valueOf(16).compareTo(rt.calculate(stayTest)) == 0);
         }
     }
