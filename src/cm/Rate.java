@@ -92,8 +92,11 @@ class Rate {
     private Boolean isValidPeriod(Period period, List<Period> list) { // changed from private to remove warning
         boolean isValid = true;
         int i = 0;
-        while (i < list.size() && isValid) {
+        while (i < list.size()) {
             isValid = !period.overlaps(list.get(i));
+            if(!isValid){
+                break;
+            }
             i++;
         }
         return isValid;
