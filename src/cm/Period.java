@@ -5,16 +5,16 @@ import java.util.List;
 /**
  * Created by CM on 01/02/2018.
  */
-public class Period {
+class Period {
     private int startHour;
     private int endHour;
 
-    public Period(int start, int end) {
+    Period(int start, int end) {
         if (start >= end) {
             throw new IllegalArgumentException("start of period cannot be later or equal to end of period");
-        }
-        if (start < 0 || start > 24 || end < 0 || end > 24) {
-            throw new IllegalArgumentException("start of period and end of period msut be between 0 and 23");
+        }/* removed end time less than zero as will never be used */
+        if (start < 0 || start > 24 || end > 24) {
+            throw new IllegalArgumentException("start of period and end of period must be between 0 and 23");
         }
         this.startHour = start;
         this.endHour = end;
@@ -43,7 +43,7 @@ public class Period {
      * The duration of a period
      * @return the number of whole hours a this period covers
      */
-    public int duration() {
+    int duration() {
         return this.endHour - this.startHour;
     }
 
@@ -52,7 +52,7 @@ public class Period {
      * @param list the list of periods to check
      * @return the number of full hours covered by this period
      */
-    public int occurences(List<Period> list) {
+    int occurrences(List<Period> list) {
         int occurences = 0;
         for (int hour = this.startHour; hour < this.endHour; hour++) {
             if (isIn(hour, list)) {
@@ -62,7 +62,7 @@ public class Period {
         return occurences;
     }
 
-    public boolean overlaps(Period period) {
-        return this.endHour>period.startHour && this.startHour<period.endHour;
+    boolean overlaps(Period period) {
+        return this.endHour > period.startHour && this.startHour < period.endHour;
     }
 }

@@ -7,14 +7,14 @@ import java.util.List;
 /**
  * Created by CM on 01/02/2018.
  */
-public class Rate {
+class Rate {
     private CarParkKind kind;
     private BigDecimal hourlyNormalRate;
     private BigDecimal hourlyReducedRate;
-    private ArrayList<Period> reduced = new ArrayList<>();
-    private ArrayList<Period> normal = new ArrayList<>();
+    private ArrayList<Period> reduced;
+    private ArrayList<Period> normal;
 
-    public Rate(CarParkKind kind, BigDecimal normalRate, BigDecimal reducedRate, ArrayList<Period> reducedPeriods
+    Rate(CarParkKind kind, BigDecimal normalRate, BigDecimal reducedRate, ArrayList<Period> reducedPeriods
             , ArrayList<Period> normalPeriods) {
         if (reducedPeriods == null || normalPeriods == null) {
             throw new IllegalArgumentException("periods cannot be null");
@@ -25,8 +25,9 @@ public class Rate {
         if (normalRate.compareTo(BigDecimal.ZERO) < 0 || reducedRate.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("A rate cannot be negative");
         }
-        if (normalRate.compareTo(reducedRate) <= 0) {
+        if (normalRate.compareTo(reducedRate) < 0) {
             throw new IllegalArgumentException("The normal rate cannot be less or equal to the reduced rate");
+            /*spec states normal rate CAN be equal to reduced rate so removed = */
         }
         if (!isValidPeriods(reducedPeriods) || !isValidPeriods(normalPeriods)) {
             throw new IllegalArgumentException("The periods are not valid individually");
@@ -43,8 +44,8 @@ public class Rate {
 
     /**
      * Checks if two collections of periods are valid together
-     * @param periods1
-     * @param periods2
+     * @param periods1  the length of time
+     * @param periods2  the length of time
      * @return true if the two collections of periods are valid together
      */
     private boolean isValidPeriods(ArrayList<Period> periods1, ArrayList<Period> periods2) {
@@ -65,7 +66,7 @@ public class Rate {
     private Boolean isValidPeriods(ArrayList<Period> list) {
         Boolean isValid = true;
         if (list.size() >= 2) {
-            //cm.Period secondPeriod; TODO remove this
+            // removed non used variable cm.Period secondPeriod;
             int i = 0;
             int lastIndex = list.size()-1;
             while (i < lastIndex && isValid) {
@@ -80,10 +81,10 @@ public class Rate {
      * checks if a period is a valid addition to a collection of periods
      * @param period the cm.Period addition
      * @param list the collection of periods to check
-     * @return true if the period does not overlap in the collecton of periods
+     * @return true if the period does not overlap in the collection of periods
      */
-    private Boolean isValidPeriod(Period period, List<Period> list) {
-        Boolean isValid = true;
+    private Boolean isValidPeriod(Period period, List<Period> list) { // changed from private to remove warning
+        boolean isValid = true;
         int i = 0;
         while (i < list.size() && isValid) {
             isValid = !period.overlaps(list.get(i));
@@ -91,32 +92,27 @@ public class Rate {
         }
         return isValid;
     }
-    public BigDecimal calculate(Period periodStay) {
-        int normalRateHours = periodStay.occurences(normal);
-        int reducedRateHours = periodStay.occurences(reduced);
+    BigDecimal calculate(Period periodStay) {
+        int normalRateHours = periodStay.occurrences(normal);
+        int reducedRateHours = periodStay.occurrences(reduced);
         BigDecimal amountDue;
         amountDue = ((this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours)))
                 .add(this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)))
                 .subtract(this.kind.getFree()));
-               // .subtract(BigDecimal.valueOf(this.kind.getFree())));
-                //.multiply(BigDecimal.valueOf(this.kind.getReduction()));
-        if (amountDue.doubleValue() < 0){
+        /*if a negative amount is calculated no charge is applied*/
+        if (amountDue.compareTo(BigDecimal.ZERO) < 0){
             return BigDecimal.valueOf(0.00);
-        }else{
+        }else{  // apply the reduction
             amountDue = amountDue.multiply(this.kind.getReduction());
-            //amountDue = amountDue.multiply(BigDecimal.valueOf(this.kind.getReduction()));
         }
-/*
-        if(this.kind.getMinimum() > 0.00 && this.kind.getMinimum() > amountDue.doubleValue()) {
-            return BigDecimal.valueOf(this.kind.getMinimum());
-        }
-        if(this.kind.getMaximum() > 0.00 && this.kind.getMaximum() < amountDue.doubleValue()) {
-            return BigDecimal.valueOf(this.kind.getMaximum());
-        }*/
-        if(this.kind.getMinimum().doubleValue() > 0.00 && this.kind.getMinimum().doubleValue() > amountDue.doubleValue()) {
+        /* only do this if minimum amount is set */
+        if(this.kind.getMinimum().compareTo(BigDecimal.ZERO) > 0
+                /* and the amount due is less than the minimum charge */
+                && amountDue.compareTo(this.kind.getMinimum()) < 0) {
             return this.kind.getMinimum();
         }
-        if(this.kind.getMaximum().doubleValue() > 0.00 && this.kind.getMaximum().doubleValue() < amountDue.doubleValue()) {
+        if(this.kind.getMaximum().compareTo(BigDecimal.ZERO) > 0.00
+                && amountDue.compareTo(this.kind.getMaximum()) > 0) {
             return this.kind.getMaximum();
         }
         return amountDue;

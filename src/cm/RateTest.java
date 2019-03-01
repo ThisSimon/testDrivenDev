@@ -358,6 +358,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate1() throws IllegalArgumentException {
             stayTest = new Period(-1, -1);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -367,6 +372,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate2() throws IllegalArgumentException {
             stayTest = new Period(-1, 0);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -376,6 +386,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate3() throws IllegalArgumentException {
             stayTest = new Period(-1, 1);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -385,6 +400,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate4() throws IllegalArgumentException {
             stayTest = new Period(1, 1);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -394,6 +414,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate5() throws IllegalArgumentException {
             stayTest = new Period(1, 0);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -404,6 +429,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate6() throws IllegalArgumentException {
             stayTest = new Period(1, -1);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -413,6 +443,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate7() throws IllegalArgumentException {
             stayTest = new Period(24, 24);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -422,6 +457,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate8() throws IllegalArgumentException {
             stayTest = new Period(24, 25);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -431,6 +471,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate9() throws IllegalArgumentException {
             stayTest = new Period(24, 0);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -440,6 +485,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate10() throws IllegalArgumentException {
             stayTest = new Period(24, 1);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -449,6 +499,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate11() throws IllegalArgumentException {
             stayTest = new Period(24, 23);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -458,6 +513,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate12() throws IllegalArgumentException {
             stayTest = new Period(12, 12);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -468,6 +528,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate13() throws IllegalArgumentException {
             stayTest = new Period(12, 11);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -494,6 +559,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate15() throws IllegalArgumentException {
             stayTest = new Period('A', 1);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -503,6 +573,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate16() throws IllegalArgumentException {
             stayTest = new Period('Z', 1);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -512,6 +587,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate17() throws IllegalArgumentException {
             stayTest = new Period('a', 1);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -521,6 +601,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate18() throws IllegalArgumentException {
             stayTest = new Period('z', 1);
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -530,6 +615,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate19() throws IllegalArgumentException {
             stayTest = new Period(1, 'A');
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -539,6 +629,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate20() throws IllegalArgumentException {
             stayTest = new Period(1, 'a');
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -548,6 +643,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate21() throws IllegalArgumentException {
             stayTest = new Period(1, 'Z');
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -557,6 +657,11 @@ package cm;
         @Test(expected = IllegalArgumentException.class)
         public void calculate22() throws IllegalArgumentException {
             stayTest = new Period(1, 'z');
+            carParkKind = CarParkKind.STAFF;
+            reducedPeriodsTime.add(new Period(1,2));
+            normalPeriodsTime.add(new Period(3,4));
+            hourlyNormalRate = BigDecimal.valueOf(2);
+            hourlyReducedRate = BigDecimal.valueOf(1);
             Rate rc = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
             rc.calculate(stayTest);
@@ -854,6 +959,22 @@ package cm;
         @Test
         public void calculate42() {
             stayTest = new Period(0, 24);
+            carParkKind = CarParkKind.MANAGEMENT;
+
+            reducedPeriodsTime.add(new Period(11, 12));
+            reducedPeriodsTime.add(new Period(18, 20));
+            normalPeriodsTime.add(new Period(8, 10));
+            normalPeriodsTime.add(new Period(14, 16));
+            hourlyNormalRate = BigDecimal.valueOf(4);
+            hourlyReducedRate = BigDecimal.valueOf(1);
+
+            Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
+                    reducedPeriodsTime, normalPeriodsTime);
+            assertTrue(BigDecimal.valueOf(19).compareTo(rt.calculate(stayTest)) == 0);
+        }
+        @Test
+        public void calculate43() {
+            stayTest = new Period(0, 24);
             carParkKind = CarParkKind.STUDENT;
 
             reducedPeriodsTime.add(new Period(11, 12));
@@ -868,7 +989,7 @@ package cm;
             assertTrue(BigDecimal.valueOf(3.375).compareTo(rt.calculate(stayTest)) == 0);
         }
         @Test
-        public void calculate43() {
+        public void calculate44() {
             stayTest = new Period(0, 24);
             carParkKind = CarParkKind.STAFF;
 
@@ -881,6 +1002,118 @@ package cm;
 
             Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
                                             reducedPeriodsTime, normalPeriodsTime);
+            assertTrue(BigDecimal.valueOf(16).compareTo(rt.calculate(stayTest)) == 0);
+        }
+        @Test
+        public void calculate45() {
+            stayTest = new Period(8, 9);
+            carParkKind = CarParkKind.MANAGEMENT;
+
+            reducedPeriodsTime.add(new Period(11, 12));
+            reducedPeriodsTime.add(new Period(18, 20));
+            normalPeriodsTime.add(new Period(8, 10));
+            normalPeriodsTime.add(new Period(14, 16));
+            hourlyNormalRate = BigDecimal.valueOf(2.99);
+            hourlyReducedRate = BigDecimal.valueOf(0);
+
+            Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
+                    reducedPeriodsTime, normalPeriodsTime);
+            assertTrue(BigDecimal.valueOf(3).compareTo(rt.calculate(stayTest)) == 0);
+        }
+        @Test
+        public void calculate46() {
+            stayTest = new Period(8, 9);
+            carParkKind = CarParkKind.MANAGEMENT;
+
+            reducedPeriodsTime.add(new Period(11, 12));
+            reducedPeriodsTime.add(new Period(18, 20));
+            normalPeriodsTime.add(new Period(8, 10));
+            normalPeriodsTime.add(new Period(14, 16));
+            hourlyNormalRate = BigDecimal.valueOf(3.00);
+            hourlyReducedRate = BigDecimal.valueOf(0);
+
+            Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
+                    reducedPeriodsTime, normalPeriodsTime);
+            assertTrue(BigDecimal.valueOf(3).compareTo(rt.calculate(stayTest)) == 0);
+        }
+        @Test
+        public void calculate47() {
+            stayTest = new Period(8, 9);
+            carParkKind = CarParkKind.MANAGEMENT;
+
+            reducedPeriodsTime.add(new Period(11, 12));
+            reducedPeriodsTime.add(new Period(18, 20));
+            normalPeriodsTime.add(new Period(8, 10));
+            normalPeriodsTime.add(new Period(14, 16));
+            hourlyNormalRate = BigDecimal.valueOf(3.01);
+            hourlyReducedRate = BigDecimal.valueOf(0);
+
+            Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
+                    reducedPeriodsTime, normalPeriodsTime);
+            assertTrue(BigDecimal.valueOf(3.01).compareTo(rt.calculate(stayTest)) == 0);
+        }
+        @Test
+        public void calculate48() {
+            stayTest = new Period(8, 9);
+            carParkKind = CarParkKind.STAFF;
+
+            reducedPeriodsTime.add(new Period(11, 12));
+            reducedPeriodsTime.add(new Period(18, 20));
+            normalPeriodsTime.add(new Period(8, 10));
+            normalPeriodsTime.add(new Period(14, 16));
+            hourlyNormalRate = BigDecimal.valueOf(15.99);
+            hourlyReducedRate = BigDecimal.valueOf(0);
+
+            Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
+                    reducedPeriodsTime, normalPeriodsTime);
+            assertTrue(BigDecimal.valueOf(15.99).compareTo(rt.calculate(stayTest)) == 0);
+        }
+        @Test
+        public void calculate49() {
+            stayTest = new Period(8, 9);
+            carParkKind = CarParkKind.STAFF;
+
+            reducedPeriodsTime.add(new Period(11, 12));
+            reducedPeriodsTime.add(new Period(18, 20));
+            normalPeriodsTime.add(new Period(8, 10));
+            normalPeriodsTime.add(new Period(14, 16));
+            hourlyNormalRate = BigDecimal.valueOf(16.00);
+            hourlyReducedRate = BigDecimal.valueOf(0);
+
+            Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
+                    reducedPeriodsTime, normalPeriodsTime);
+            assertTrue(BigDecimal.valueOf(16).compareTo(rt.calculate(stayTest)) == 0);
+        }
+        @Test
+        public void calculate50() {
+            stayTest = new Period(8, 9);
+            carParkKind = CarParkKind.STAFF;
+
+            reducedPeriodsTime.add(new Period(11, 12));
+            reducedPeriodsTime.add(new Period(18, 20));
+            normalPeriodsTime.add(new Period(8, 10));
+            normalPeriodsTime.add(new Period(14, 16));
+            hourlyNormalRate = BigDecimal.valueOf(16.01);
+            hourlyReducedRate = BigDecimal.valueOf(0);
+
+            Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
+                    reducedPeriodsTime, normalPeriodsTime);
+            assertTrue(BigDecimal.valueOf(16).compareTo(rt.calculate(stayTest)) == 0);
+        }
+        @Test(expected = IllegalArgumentException.class)
+        public void calculate51() {
+            stayTest = new Period(8, 9);
+            carParkKind = CarParkKind.STAFF;
+
+            reducedPeriodsTime.add(new Period(11, 12));
+            reducedPeriodsTime.add(new Period(18, 20));
+            normalPeriodsTime.add(new Period(25, 10)); //start > 25
+            normalPeriodsTime.add(new Period(14, 16));
+            hourlyNormalRate = BigDecimal.valueOf(16.01);
+            hourlyReducedRate = BigDecimal.valueOf(0);
+
+            Rate rt = new Rate(carParkKind, hourlyNormalRate, hourlyReducedRate,
+                    reducedPeriodsTime, normalPeriodsTime);
             assertTrue(BigDecimal.valueOf(16).compareTo(rt.calculate(stayTest)) == 0);
         }
     }
