@@ -51,8 +51,11 @@ class Rate {
     private boolean isValidPeriods(ArrayList<Period> periods1, ArrayList<Period> periods2) {
         Boolean isValid = true;
         int i = 0;
-        while (i < periods1.size() && isValid) {
+        while (i < periods1.size()) {
             isValid = isValidPeriod(periods1.get(i), periods2);
+            if(!isValid){
+                break;
+            }
             i++;
         }
         return isValid;
@@ -69,8 +72,11 @@ class Rate {
             // removed non used variable cm.Period secondPeriod;
             int i = 0;
             int lastIndex = list.size()-1;
-            while (i < lastIndex && isValid) {
+            while (i < lastIndex) {
                 isValid = isValidPeriod(list.get(i), ((List<Period>)list).subList(i + 1, lastIndex+1));
+                if(!isValid){
+                    break;
+                }
                 i++;
             }
         }
