@@ -61,7 +61,7 @@
     100%
   </span>
   <span class="absValue">
-    (53/ 53)
+    (57/ 57)
   </span>
 </td>
 </tr>
@@ -125,81 +125,87 @@
 <i>51</i>&nbsp;    private boolean isValidPeriods(ArrayList&lt;Period&gt; periods1, ArrayList&lt;Period&gt; periods2) {
 <b class="fc"><i>52</i>&nbsp;        Boolean isValid = true;</b>
 <b class="fc"><i>53</i>&nbsp;        int i = 0;</b>
-<b class="pc"><i>54</i>&nbsp;        while (i &lt; periods1.size() &amp;&amp; isValid) {</b>
+<b class="fc"><i>54</i>&nbsp;        while (i &lt; periods1.size()) {</b>
 <b class="fc"><i>55</i>&nbsp;            isValid = isValidPeriod(periods1.get(i), periods2);</b>
-<b class="fc"><i>56</i>&nbsp;            i++;</b>
-<i>57</i>&nbsp;        }
-<b class="fc"><i>58</i>&nbsp;        return isValid;</b>
-<i>59</i>&nbsp;    }
-<i>60</i>&nbsp;
-<i>61</i>&nbsp;    /**
-<i>62</i>&nbsp;     * checks if a collection of periods is valid
-<i>63</i>&nbsp;     * @param list the collection of periods to check
-<i>64</i>&nbsp;     * @return true if the periods do not overlap
-<i>65</i>&nbsp;     */
-<i>66</i>&nbsp;    private Boolean isValidPeriods(ArrayList&lt;Period&gt; list) {
-<b class="fc"><i>67</i>&nbsp;        Boolean isValid = true;</b>
-<b class="fc"><i>68</i>&nbsp;        if (list.size() &gt;= 2) {</b>
-<i>69</i>&nbsp;            // removed non used variable cm.Period secondPeriod;
-<b class="fc"><i>70</i>&nbsp;            int i = 0;</b>
-<b class="fc"><i>71</i>&nbsp;            int lastIndex = list.size()-1;</b>
-<b class="pc"><i>72</i>&nbsp;            while (i &lt; lastIndex &amp;&amp; isValid) {</b>
-<b class="fc"><i>73</i>&nbsp;                isValid = isValidPeriod(list.get(i), ((List&lt;Period&gt;)list).subList(i + 1, lastIndex+1));</b>
-<b class="fc"><i>74</i>&nbsp;                i++;</b>
-<i>75</i>&nbsp;            }
-<i>76</i>&nbsp;        }
-<b class="fc"><i>77</i>&nbsp;        return isValid;</b>
-<i>78</i>&nbsp;    }
-<i>79</i>&nbsp;
-<i>80</i>&nbsp;    /**
-<i>81</i>&nbsp;     * checks if a period is a valid addition to a collection of periods
-<i>82</i>&nbsp;     * @param period the cm.Period addition
-<i>83</i>&nbsp;     * @param list the collection of periods to check
-<i>84</i>&nbsp;     * @return true if the period does not overlap in the collection of periods
-<i>85</i>&nbsp;     */
-<i>86</i>&nbsp;    private Boolean isValidPeriod(Period period, List&lt;Period&gt; list) { // changed from private to remove warning
-<b class="fc"><i>87</i>&nbsp;        boolean isValid = true;</b>
-<b class="fc"><i>88</i>&nbsp;        int i = 0;</b>
-<b class="fc"><i>89</i>&nbsp;        while (i &lt; list.size() &amp;&amp; isValid) {</b>
-<b class="fc"><i>90</i>&nbsp;            isValid = !period.overlaps(list.get(i));</b>
-<b class="fc"><i>91</i>&nbsp;            i++;</b>
-<i>92</i>&nbsp;        }
-<b class="fc"><i>93</i>&nbsp;        return isValid;</b>
-<i>94</i>&nbsp;    }
-<i>95</i>&nbsp;    BigDecimal calculate(Period periodStay) {
-<b class="fc"><i>96</i>&nbsp;        int normalRateHours = periodStay.occurrences(normal);</b>
-<b class="fc"><i>97</i>&nbsp;        int reducedRateHours = periodStay.occurrences(reduced);</b>
-<i>98</i>&nbsp;        BigDecimal amountDue;
-<b class="fc"><i>99</i>&nbsp;        amountDue = ((this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours)))</b>
-<b class="fc"><i>100</i>&nbsp;                .add(this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)))</b>
-<b class="fc"><i>101</i>&nbsp;                .subtract(this.kind.getFree()));</b>
-<i>102</i>&nbsp;        /*if a negative amount is calculated no charge is applied*/
-<b class="fc"><i>103</i>&nbsp;        if (amountDue.compareTo(BigDecimal.ZERO) &lt; 0){</b>
-<b class="fc"><i>104</i>&nbsp;            return BigDecimal.valueOf(0.00);</b>
-<i>105</i>&nbsp;        }else{  // apply the reduction
-<b class="fc"><i>106</i>&nbsp;            amountDue = amountDue.multiply(this.kind.getReduction());</b>
-<i>107</i>&nbsp;        }
-<i>108</i>&nbsp;        /* only do this if minimum amount is set */
-<b class="fc"><i>109</i>&nbsp;        if(this.kind.getMinimum().compareTo(BigDecimal.ZERO) &gt; 0</b>
-<i>110</i>&nbsp;                /* and the amount due is less than the minimum charge */
-<b class="fc"><i>111</i>&nbsp;                &amp;&amp; amountDue.compareTo(this.kind.getMinimum()) &lt; 0) {</b>
-<b class="fc"><i>112</i>&nbsp;            return this.kind.getMinimum();</b>
+<b class="fc"><i>56</i>&nbsp;            if(!isValid){</b>
+<b class="fc"><i>57</i>&nbsp;                break;</b>
+<i>58</i>&nbsp;            }
+<b class="fc"><i>59</i>&nbsp;            i++;</b>
+<i>60</i>&nbsp;        }
+<b class="fc"><i>61</i>&nbsp;        return isValid;</b>
+<i>62</i>&nbsp;    }
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;    /**
+<i>65</i>&nbsp;     * checks if a collection of periods is valid
+<i>66</i>&nbsp;     * @param list the collection of periods to check
+<i>67</i>&nbsp;     * @return true if the periods do not overlap
+<i>68</i>&nbsp;     */
+<i>69</i>&nbsp;    private Boolean isValidPeriods(ArrayList&lt;Period&gt; list) {
+<b class="fc"><i>70</i>&nbsp;        Boolean isValid = true;</b>
+<b class="fc"><i>71</i>&nbsp;        if (list.size() &gt;= 2) {</b>
+<i>72</i>&nbsp;            // removed non used variable cm.Period secondPeriod;
+<b class="fc"><i>73</i>&nbsp;            int i = 0;</b>
+<b class="fc"><i>74</i>&nbsp;            int lastIndex = list.size()-1;</b>
+<b class="fc"><i>75</i>&nbsp;            while (i &lt; lastIndex) {</b>
+<b class="fc"><i>76</i>&nbsp;                isValid = isValidPeriod(list.get(i), ((List&lt;Period&gt;)list).subList(i + 1, lastIndex+1));</b>
+<b class="fc"><i>77</i>&nbsp;                if(!isValid){</b>
+<b class="fc"><i>78</i>&nbsp;                    break;</b>
+<i>79</i>&nbsp;                }
+<b class="fc"><i>80</i>&nbsp;                i++;</b>
+<i>81</i>&nbsp;            }
+<i>82</i>&nbsp;        }
+<b class="fc"><i>83</i>&nbsp;        return isValid;</b>
+<i>84</i>&nbsp;    }
+<i>85</i>&nbsp;
+<i>86</i>&nbsp;    /**
+<i>87</i>&nbsp;     * checks if a period is a valid addition to a collection of periods
+<i>88</i>&nbsp;     * @param period the cm.Period addition
+<i>89</i>&nbsp;     * @param list the collection of periods to check
+<i>90</i>&nbsp;     * @return true if the period does not overlap in the collection of periods
+<i>91</i>&nbsp;     */
+<i>92</i>&nbsp;    private Boolean isValidPeriod(Period period, List&lt;Period&gt; list) { // changed from private to remove warning
+<b class="fc"><i>93</i>&nbsp;        boolean isValid = true;</b>
+<b class="fc"><i>94</i>&nbsp;        int i = 0;</b>
+<b class="fc"><i>95</i>&nbsp;        while (i &lt; list.size() &amp;&amp; isValid) {</b>
+<b class="fc"><i>96</i>&nbsp;            isValid = !period.overlaps(list.get(i));</b>
+<b class="fc"><i>97</i>&nbsp;            i++;</b>
+<i>98</i>&nbsp;        }
+<b class="fc"><i>99</i>&nbsp;        return isValid;</b>
+<i>100</i>&nbsp;    }
+<i>101</i>&nbsp;    BigDecimal calculate(Period periodStay) {
+<b class="fc"><i>102</i>&nbsp;        int normalRateHours = periodStay.occurrences(normal);</b>
+<b class="fc"><i>103</i>&nbsp;        int reducedRateHours = periodStay.occurrences(reduced);</b>
+<i>104</i>&nbsp;        BigDecimal amountDue;
+<b class="fc"><i>105</i>&nbsp;        amountDue = ((this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours)))</b>
+<b class="fc"><i>106</i>&nbsp;                .add(this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)))</b>
+<b class="fc"><i>107</i>&nbsp;                .subtract(this.kind.getFree()));</b>
+<i>108</i>&nbsp;        /*if a negative amount is calculated no charge is applied*/
+<b class="fc"><i>109</i>&nbsp;        if (amountDue.compareTo(BigDecimal.ZERO) &lt; 0){</b>
+<b class="fc"><i>110</i>&nbsp;            return BigDecimal.valueOf(0.00);</b>
+<i>111</i>&nbsp;        }else{  // apply the reduction
+<b class="fc"><i>112</i>&nbsp;            amountDue = amountDue.multiply(this.kind.getReduction());</b>
 <i>113</i>&nbsp;        }
-<b class="fc"><i>114</i>&nbsp;        if(this.kind.getMaximum().compareTo(BigDecimal.ZERO) &gt; 0.00</b>
-<b class="fc"><i>115</i>&nbsp;                &amp;&amp; amountDue.compareTo(this.kind.getMaximum()) &gt; 0) {</b>
-<b class="fc"><i>116</i>&nbsp;            return this.kind.getMaximum();</b>
-<i>117</i>&nbsp;        }
-<b class="fc"><i>118</i>&nbsp;        return amountDue;</b>
-<i>119</i>&nbsp;    }
-<i>120</i>&nbsp;    }
-<i>121</i>&nbsp;
-<i>122</i>&nbsp;
+<i>114</i>&nbsp;        /* only do this if minimum amount is set */
+<b class="fc"><i>115</i>&nbsp;        if(this.kind.getMinimum().compareTo(BigDecimal.ZERO) &gt; 0</b>
+<i>116</i>&nbsp;                /* and the amount due is less than the minimum charge */
+<b class="fc"><i>117</i>&nbsp;                &amp;&amp; amountDue.compareTo(this.kind.getMinimum()) &lt; 0) {</b>
+<b class="fc"><i>118</i>&nbsp;            return this.kind.getMinimum();</b>
+<i>119</i>&nbsp;        }
+<b class="fc"><i>120</i>&nbsp;        if(this.kind.getMaximum().compareTo(BigDecimal.ZERO) &gt; 0.00</b>
+<b class="fc"><i>121</i>&nbsp;                &amp;&amp; amountDue.compareTo(this.kind.getMaximum()) &gt; 0) {</b>
+<b class="fc"><i>122</i>&nbsp;            return this.kind.getMaximum();</b>
+<i>123</i>&nbsp;        }
+<b class="fc"><i>124</i>&nbsp;        return amountDue;</b>
+<i>125</i>&nbsp;    }
+<i>126</i>&nbsp;    }
+<i>127</i>&nbsp;
+<i>128</i>&nbsp;
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2019-03-01 15:01</div>
+    <div style="float:right;">generated on 2019-03-01 18:19</div>
 </div>
 </body>
 </html>
