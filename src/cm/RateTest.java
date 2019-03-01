@@ -682,12 +682,6 @@ package cm;
             //assertThat(rt.calculate(stayTest), is(BigDecimal.valueOf(0.00)));
             assertTrue(BigDecimal.valueOf(0).compareTo(rt.calculate(stayTest)) == 0);
         }
-
-     //   @Test
-      //  public void calculate() {   //test passed as correct input  TODO
-      //      stayTest = new cm.Period(0, 1);
-      //      System.out.println("in calculate test");
-     //   }
         @Test
         public void calculate24() {
             stayTest = new Period(19, 24);
