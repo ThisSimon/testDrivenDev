@@ -1,7 +1,10 @@
+package cm;
+
+import cm.RateTest;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
-//import RateTest;
+//import cm.RateTest;
 
 public class TestRunner {
     public static void main(String[] args) {
@@ -15,10 +18,10 @@ public class TestRunner {
         }
         if(result.wasSuccessful()) {
             System.out.println(result.wasSuccessful());
-            System.out.println("at result from TestRunner passed ");
+            System.out.println("at result from cm.TestRunner passed ");
         }else{
             System.out.println(result.wasSuccessful());
-            System.out.println("at result from TestRunner failed ");
+            System.out.println("at result from cm.TestRunner failed ");
         }
     }
 }

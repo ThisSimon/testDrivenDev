@@ -1,4 +1,4 @@
-//package cm;
+package cm;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -65,7 +65,7 @@ public class Rate {
     private Boolean isValidPeriods(ArrayList<Period> list) {
         Boolean isValid = true;
         if (list.size() >= 2) {
-            //Period secondPeriod; TODO remove this
+            //cm.Period secondPeriod; TODO remove this
             int i = 0;
             int lastIndex = list.size()-1;
             while (i < lastIndex && isValid) {
@@ -78,7 +78,7 @@ public class Rate {
 
     /**
      * checks if a period is a valid addition to a collection of periods
-     * @param period the Period addition
+     * @param period the cm.Period addition
      * @param list the collection of periods to check
      * @return true if the period does not overlap in the collecton of periods
      */

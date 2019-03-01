@@ -1,18 +1,12 @@
-
+package cm;
 /*
      * Author Simon Remington
      * Date 24/02/2019
      *
      * The tester is first part testing the Rate constructor
      * The method calculate is in lower part
-     * Final part of this file contains the Rate Class that
-     * I have tested against
      */
-    import org.hamcrest.CoreMatchers;
-    import org.junit.Assert;
     import org.junit.Test;
-    import static org.hamcrest.CoreMatchers.is;
-    import static org.junit.Assert.assertThat;
     import static org.junit.Assert.assertTrue;
 
     import java.math.BigDecimal;
@@ -586,7 +580,7 @@
 
      //   @Test
       //  public void calculate() {   //test passed as correct input  TODO
-      //      stayTest = new Period(0, 1);
+      //      stayTest = new cm.Period(0, 1);
       //      System.out.println("in calculate test");
      //   }
         @Test
